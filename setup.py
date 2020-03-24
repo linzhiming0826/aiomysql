@@ -6,12 +6,6 @@ from setuptools import setup, find_packages
 
 install_requires = ['PyMySQL>=0.9,<=0.9.2']
 
-PY_VER = sys.version_info
-
-
-if not PY_VER >= (3, 5, 3):
-    raise RuntimeError("aiomysql doesn't support Python earlier than 3.5.3")
-
 
 def read(f):
     return open(os.path.join(os.path.dirname(__file__), f)).read().strip()
@@ -23,7 +17,7 @@ extras_require = {'sa': ['sqlalchemy>=1.0'], }
 def read_version():
     regexp = re.compile(r"^__version__\W*=\W*'([\d.abrc]+)'")
     init_py = os.path.join(os.path.dirname(__file__),
-                           'aiomysql', '__init__.py')
+                           'aiomysql_fork', '__init__.py')
     with open(init_py) as f:
         for line in f:
             match = regexp.match(line)
@@ -48,16 +42,16 @@ classifiers = [
 ]
 
 
-setup(name='aiomysql',
+setup(name='aiomysql-fork',
       version=read_version(),
       description=('MySQL driver for asyncio.'),
-      long_description='\n\n'.join((read('README.rst'), read('CHANGES.txt'))),
+      long_description=read('README.rst'),
       classifiers=classifiers,
       platforms=['POSIX'],
-      author="Nikolay Novik",
-      author_email="nickolainovik@gmail.com",
-      url='https://github.com/aio-libs/aiomysql',
-      download_url='https://pypi.python.org/pypi/aiomysql',
+      author="TuoX",
+      author_email="120549827@qq.com",
+      url='https://github.com/linzhiming0826/aiomysql',
+      download_url='https://pypi.python.org/pypi/aiomysql-fork',
       license='MIT',
       packages=find_packages(exclude=['tests', 'tests.*']),
       install_requires=install_requires,
